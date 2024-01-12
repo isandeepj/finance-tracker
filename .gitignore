@@ -31,5 +31,21 @@
 
 /public/assets
 
+/public/system/*
+/public/uploads/*
+/public/assets/*
+.DS_Store
+.ruby-gemset
+.sass-cache
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity
+
+/vendor/bundle
+
+
 # Ignore master key for decrypting credentials and more.
 /config/master.key
