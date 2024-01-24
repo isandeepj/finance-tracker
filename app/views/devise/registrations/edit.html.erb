@@ -15,6 +15,18 @@
           <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
         <% end %>
 
+        <div class="row">
+          <div class="col">
+            <%= f.label :first_name %>
+            <%= f.text_field :first_name, autocomplete: 'first name', class: 'form-control' %>
+          </div>
+          
+          <div class="col">
+            <%= f.label :last_name %>
+            <%= f.text_field :last_name, autocomplete: 'last name', class: 'form-control' %>
+          </div>
+        </div>
+        
         <div>
           <%= f.label :password %>
           <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
