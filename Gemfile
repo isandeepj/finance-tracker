@@ -45,6 +45,8 @@ gem "devise"
 gem "bootstrap"
 
 gem "sassc-rails" 
+gem "font-awesome-sass", "~> 6.5.1"
+gem 'iex-ruby-client'
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
