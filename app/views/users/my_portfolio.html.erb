@@ -2,7 +2,7 @@
 
 <div class='search-area'>
   <h3>Search Stocks</h3>
-  <%= form_tag search_stock_path, remote: true, method: :get do %>
+  <%= form_tag search_stock_path, data: {turbo_stream: true}, remote: true, method: :get do %>
     <div class="input-group">
       <div class="col-sm-9">
         <%= text_field_tag :stock, params[:stock], placeholder: "Stock ticker symbol", autofocus: true, class: "form-control form-control-lg" %>

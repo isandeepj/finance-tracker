@@ -9,7 +9,7 @@
         <td><strong>Email: </strong> <%= @user.email %></td>
         <td>
           <% if current_user.not_friends_with?(@user.id) %>
-            <%= link_to 'Follow friend?', friendships_path(friend: @user),
+            <%= button_to 'Follow friend?', friendships_path(friend: @user),
                           class: "btn btn-sm btn-success", method: :post %>
           <% else %>
             <span class="badge badge-secondary">
