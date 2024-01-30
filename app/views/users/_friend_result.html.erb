@@ -1,29 +1,31 @@
-<div class="results-block">
+<div class="col error-message-area">
   <%= render 'layouts/messages' %>
 </div>
 
-<% if @friends %>
-  <div class="card card-header results-block">
-    <table class="col-md-12">
-      <tbody>
-        <% @friends.each do |friend| %>
-          <tr>
-            <td><strong>Name: </strong> <%= friend.full_name %></td>
-            <td><strong>Email: </strong> <%= friend.email %></td>
-            <td><strong>Actions: </strong> <%= link_to "View Profile", user_path(friend),
-                              class: "btn btn-sm btn-success" %>
-              <% if current_user.not_friends_with?(friend.id) %>
-                <%= button_to 'Follow friend?', friendships_path(friend: friend),
-                              class: "btn btn-sm btn-success", method: :post %>
-              <% else %>
-                <span class="badge badge-secondar">
-                  You are friends
-                </span>
-              <% end %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
+<% if !@friends.empty? %>
+  <div class="card w-75 card-header results-block">
+      <table class="col-9">
+        <tbody>
+          <% @friends.each do |friend| %>
+            <tr>
+                <td><%= friend.full_name %></td>
+                <td><%= friend.email %></td>
+                <td>
+                <div class="button-group">
+                  <%= button_to 'View', user_path(friend), class: 'btn btn-sm btn-success view-button', method: :get %>
+                  <% if current_user.not_friends_with?(friend.id) %>
+                    <%= button_to 'Follow', friendships_path(friend: friend), class: 'btn btn-sm btn-primary', method: :post %>
+                  <% else %>
+                    <span class="badge text-bg-secondary">You are friends</span>
+                  <% end %>
+                </div>
+              </td>
+              
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        </div>
+      </div>
+    </div>
 <% end %>

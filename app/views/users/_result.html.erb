@@ -1,9 +1,9 @@
-<div class="results-block">
+<div class="col error-message-area">
   <%= render 'layouts/messages' %>
 </div>
 
 <% if @stock %>
-  <div class="card card-header results-block">
+  <div class="card w-75 card-header results-block">
     <strong>Ticker Symbol: </strong> <%= @stock.symbol %>
     <strong>Company Name: </strong> <%= @stock.company_name %>
     <strong>Price: </strong> <%= @stock.latest_price %>

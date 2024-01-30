@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row results-table">
   <div class="col-9">  
     <table class="table table-bordered table-hover">
       <thead>
@@ -15,10 +15,15 @@
             <td><%= friend.email %></td>
             <td><%= friend.first_name %></td>
             <td><%= friend.last_name %></td>
-            <td><%= button_to 'View Profile', user_path(friend),
-                                          class: 'btn btn-sm btn-success' %>
-              <%= button_to 'Stop following', friendship_path(friend), method: :delete, data: {confirm: 'Are you sure?'},
-                                          class: 'btn btn-sm btn-warning' %></td>
+            <td>
+              <div class="btn-group">
+                <%= button_to 'View', user_path(friend),
+                              class: 'btn btn-sm btn-success view-button', method: :get %>
+
+                <%= button_to 'Unfollow', friendship_path(friend), method: :delete, data: { confirm: 'Are you sure?' },
+                              class: 'btn btn-sm btn-warning' %>
+              </div>
+            </td>
           </tr>
         <% end %>
       </tbody>

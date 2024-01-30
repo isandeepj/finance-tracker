@@ -8,10 +8,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  # Check if a stock with the given ticker symbol is already tracked by the user.
   def stock_already_tracked?(ticker_symbol)
     stock = Stock.check_db(ticker_symbol)
-    return false unless stock
-    stocks.where(id: stock.id).exists?    
+    stock.present? && stocks.exists?(stock.id)
   end
   
   def under_stock_limit?
@@ -23,15 +23,13 @@ class User < ApplicationRecord
   end
 
   def full_name
-    return "#{first_name} #{last_name}" if first_name || last_name
-    "Anonymous"
+    [first_name, last_name].compact.join(' ').presence || 'Anonymous'
   end
 
   def self.search(param)
     param.strip!
-    to_send_back = (first_name_matches(param) + last_name_matches(param) + email_matches(param)).uniq
-    return nil unless to_send_back
-    to_send_back
+    to_send_back = first_name_matches(param) + last_name_matches(param) + email_matches(param)
+    to_send_back.uniq.compact
   end
 
   def self.first_name_matches(param)
@@ -47,7 +45,7 @@ class User < ApplicationRecord
   end
 
   def self.matches(field_name, param)
-    where("#{field_name} like ?", "%#{param}%")
+    where("#{field_name} LIKE ?", "%#{param}%")
   end
 
   def except_current_user(users)
@@ -55,6 +53,6 @@ class User < ApplicationRecord
   end
 
   def not_friends_with?(id_of_friend)
-    !self.friends.where(id: id_of_friend).exists?
+    !friends.exists?(id: id_of_friend)
   end
 end

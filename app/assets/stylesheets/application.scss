@@ -18,7 +18,7 @@
  @import "font-awesome";
 
 .search-area {
-    padding-top: 50px;
+    padding-top: 40px;
 }
 
 .no-right-padding {
@@ -44,6 +44,10 @@
     padding-right: 5px;
 }
 
+.h1-label {
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+}
 .h2-label {
     margin-top: 1rem;
     margin-bottom: 1.5rem;
@@ -59,4 +63,14 @@
 
 .results-table {
     margin-top: 1rem;
+}
+
+.error-message-area {
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+
+.view-button {
+    margin-right: 5px;
 }

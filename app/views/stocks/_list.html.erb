@@ -17,9 +17,9 @@
             <td><%= stock.latest_price %></td>
             <td><% if current_user.can_track_stock?(stock.symbol) %>
                   <%= button_to 'Add to portfolio', user_stocks_path(user: current_user, symbol: stock.symbol),
-                                    class: "btn btn-sm btn-success", method: :post %>
+                                    class: "btn btn-sm btn-success view-button", method: :post %>
                 <% elsif current_user.id != @user.id %>
-                  <span class="badge text-bg-secondary">
+                  <span class="badge text-bg-secondary view-button">
                     You are already tracking
                     <% if !current_user.under_stock_limit? %>
                       10 stocks
