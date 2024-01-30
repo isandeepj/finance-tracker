@@ -4,7 +4,7 @@ class Stock < ApplicationRecord
 
   validates :company_name, :symbol, presence: true
 
-    def logo
+    def image_url
       "https://storage.googleapis.com/iex/api/logos/#{symbol}.png"
     end
     

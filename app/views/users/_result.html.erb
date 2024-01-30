@@ -4,7 +4,8 @@
 
 <% if @stock %>
   <div class="card w-75 card-header results-block">
-    <strong>Ticker Symbol: </strong> <%= @stock.symbol %>
+  <%= image_tag @stock.image_url, alt: 'Stock Logo', class: 'rounded', id: 'stock-image' , size: '30x30'%>
+  <strong>Ticker Symbol: </strong> <%= @stock.symbol %>
     <strong>Company Name: </strong> <%= @stock.company_name %>
     <strong>Price: </strong> <%= @stock.latest_price %>
     <% if current_user.can_track_stock?(@stock.symbol) %>
